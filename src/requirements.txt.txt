@@ -1,0 +1,3 @@
+pip install Flask
+pip install Flask-SQLAlchemy PyMySQL
+pip install Flask-WTF Flask-Login

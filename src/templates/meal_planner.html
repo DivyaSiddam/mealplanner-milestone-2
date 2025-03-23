@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner</title>
+    <style>
+        /* Background Styling */
+        body {
+            background-image: url("{{ url_for('static', filename='images/meal_plan.avif') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        /* Buttons */
+        .btn {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            transition: 0.3s;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn:hover { background-color: #e68900; }
+
+        /* Input Fields */
+        input[type="text"], input[type="date"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+        }
+
+        /* Meal List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Meal Planner</h2>
+
+        <form method="POST">
+            <label for="date">Select Date:</label>
+            <input type="date" name="date" required><br><br>
+
+            <label for="meal">Meal Name:</label>
+            <input type="text" name="meal" placeholder="e.g., Breakfast, Lunch, Dinner" required><br><br>
+
+            <label for="items">Meal Items:</label>
+            <input type="text" name="items" placeholder="e.g., Eggs, Oatmeal" required><br><br>
+
+            <button type="submit" class="btn">Save Meal Plan</button>
+        </form>
+
+        <hr>
+
+        <h3>Your Planned Meals</h3>
+        {% if meal_plans %}
+            <ul>
+                {% for plan in meal_plans %}
+                    <li><strong>{{ plan.date }}</strong>: {{ plan.meal }} - {{ plan.items }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No meals planned yet.</p>
+        {% endif %}
+
+        <br>
+        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Plan Details - MealPrep App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+      /* Background Styling */
+      body {
+          background-image: url("{{ url_for('static', filename='images/mealplan.webp') }}");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          font-family: Arial, sans-serif;
+          color: white;
+          margin: 0;
+          padding: 0;
+      }
+      .container {
+          background: rgba(0, 0, 0, 0.7);
+          padding: 20px;
+          border-radius: 10px;
+          width: 90%;
+          max-width: 800px;
+          margin: 50px auto;
+          text-align: center;
+      }
+      /* Table Styling */
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+          background: rgba(255, 255, 255, 0.2);
+      }
+      th, td {
+          padding: 12px;
+          border: 1px solid white;
+          text-align: center;
+      }
+      th {
+          background: rgba(255, 255, 255, 0.3);
+          font-weight: bold;
+      }
+      td { background: rgba(255, 255, 255, 0.2); }
+
+      /* Button Styling */
+      .btn {
+          background-color: #ff9800;
+          color: white;
+          padding: 10px 15px;
+          text-decoration: none;
+          border-radius: 5px;
+          display: inline-block;
+          transition: 0.3s;
+          font-weight: bold;
+          margin-top: 20px;
+      }
+      .btn:hover { background-color: #e68900; }
+  </style>
+</head>
+<body>
+  <div class="container">
+     <h2>Meal Plan: {{ mealplan.name }}</h2>
+     <p><strong>Date:</strong> {{ mealplan.date }}</p>
+
+     
+     <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Analysis</title>
+</head>
+<body>
+    <h2>Nutrition Analysis</h2>
+
+    <form method="POST">
+        <input type="number" name="calories" placeholder="Calories (kcal)" required><br>
+        <input type="number" name="protein" placeholder="Protein (g)" required><br>
+        <input type="number" name="fat" placeholder="Fat (g)" required><br>
+        <input type="number" name="carbohydrates" placeholder="Carbohydrates (g)" required><br>
+        <input type="number" name="fiber" placeholder="Fiber (g)" required><br>
+        <input type="number" name="sugar" placeholder="Sugar (g)" required><br>
+        <button type="submit">Save Nutrition Data</button>
+    </form>
+
+    <hr>
+
+    <h3>Saved Nutrition Data</h3>
+    {% if session.get('nutrition_data') %}
+        <p><strong>Calories:</strong> {{ session['nutrition_data']['calories'] }} kcal</p>
+        <p><strong>Protein:</strong> {{ session['nutrition_data']['protein'] }} g</p>
+        <p><strong>Fat:</strong> {{ session['nutrition_data']['fat'] }} g</p>
+        <p><strong>Carbohydrates:</strong> {{ session['nutrition_data']['carbohydrates'] }} g</p>
+        <p><strong>Fiber:</strong> {{ session['nutrition_data']['fiber'] }} g</p>
+        <p><strong>Sugar:</strong> {{ session['nutrition_data']['sugar'] }} g</p>
+    {% else %}
+        <p>No nutrition data available.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
